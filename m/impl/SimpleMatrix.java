@@ -42,6 +42,17 @@ public class SimpleMatrix implements Matrix
 		return erg;
 	}
 	@Override
+	public Komplex Spur()
+	{
+		Komplex erg = new Komplex(0.0,0.0);
+		for (int i=0;i<dim;i++)
+		{
+			Komplex element = m[i][i];
+			erg = Komplex.add(erg, element);
+		}
+		return erg;
+	}
+	@Override
 	public Vektor mult(Vektor v) 
 	{
 		int n = dim;
@@ -64,7 +75,7 @@ public class SimpleMatrix implements Matrix
 	public Matrix mult(Matrix matrix)
 	{
 		int n = dim;
-		Matrix erg = new SimpleMatrix(n);
+		Matrix erg = Controller.getMatrix(n);
 		for (int i=0;i<n;i++)
 		{
 			for (int j=0;j<n;j++)
@@ -78,6 +89,31 @@ public class SimpleMatrix implements Matrix
 					summe = Komplex.add(summe,produkt);
 				}
 				erg.setElement(i,j,summe);
+			}
+		}
+		return erg;
+	}
+	@Override
+	public Matrix kmult(Matrix matrix)
+	{
+		int n1 = dim;
+		int n2 = matrix.getDimension();
+		int n = n1 * n2;
+		Matrix erg = Controller.getMatrix(n);
+		for (int i1=0;i1<n1;i1++)
+		{
+			for (int j1=0;j1<n2;j1++)
+			{
+				for (int i2=0;i2<n1;i2++)
+				{
+					for (int j2=0;j2<n2;j2++)
+					{
+						Komplex element1 = this.getElement(i1, i2);
+						Komplex element2 = matrix.getElement(j1, j2);
+						Komplex produkt = Komplex.mult(element1,element2);
+						erg.setElement(i1*n2 +j1,i2*n2+j2,produkt);
+					}
+				}
 			}
 		}
 		return erg;
@@ -100,6 +136,20 @@ public class SimpleMatrix implements Matrix
 					erg.setElement(i1,j1,getElement(i2,j2));
 				}
 			}
+		}
+		return erg;
+	}
+	@Override
+	public String toString()
+	{
+		String erg = "";
+		for (int i=0;i<dim;i++)
+		{
+			for (int j=0;j<dim;j++)
+			{
+				erg = erg + " " + m[i][j].toString();
+			}
+			erg = erg + "\n";
 		}
 		return erg;
 	}

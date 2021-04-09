@@ -6,5 +6,8 @@ public interface Matrix
 	public Komplex getElement(int i,int j);
 	public Vektor mult(Vektor v);
 	public Matrix mult(Matrix m);
+	public Matrix kmult(Matrix m); // Kronecker Produkt
 	public Matrix getSubMatrix(int i,int j); //Matrix ohne i-te Zeile und j-te Spalte 
+	public Komplex Spur();
+	public String toString();
 }

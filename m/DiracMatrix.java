@@ -31,7 +31,7 @@ public class DiracMatrix extends SimpleMatrix
 			this.setElement(0,0,new Komplex(0.0,0.0));
 			this.setElement(0,1,new Komplex(0.0,0.0));
 			this.setElement(0,2,new Komplex(0.0,0.0));
-			this.setElement(0,3,new Komplex(10.0,0.0));
+			this.setElement(0,3,new Komplex(1.0,0.0));
 			this.setElement(1,0,new Komplex(0.0,0.0));
 			this.setElement(1,1,new Komplex(0.0,0.0));
 			this.setElement(1,2,new Komplex(1.0,0.0));

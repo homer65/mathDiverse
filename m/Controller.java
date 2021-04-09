@@ -23,10 +23,6 @@ public class Controller
 		//return new SimpleDeterminante();
 		return new PureDeterminante();
 	}
-	public static Spur getSpur()
-	{
-		return new SimpleSpur();
-	}
 	public static Matrix getMatrix(int n)
 	{
 		return new SimpleMatrix(n);

@@ -9,14 +9,14 @@ public class PauliMatrix extends SimpleMatrix
 		super(2);
 		if (n == 0)
 		{
-			m[0][0] = new Komplex(1.0,0.0);
-			m[0][1] = new Komplex(0.0,0.0);
-			m[1][0] = new Komplex(0.0,0.0);
-			m[1][1] = new Komplex(1.0,0.0);
+			this.setElement(0,0,new Komplex(1.0,0.0));
+			this.setElement(0,1,new Komplex(0.0,0.0));
+			this.setElement(1,0,new Komplex(0.0,0.0));
+			this.setElement(1,1,new Komplex(1.0,0.0));
 		}
 		else if (n == 1)
 		{
-			m[0][0] = new Komplex(0.0,0.0);
+			this.setElement(0,0,new Komplex(0.0,0.0));
 			this.setElement(0,1,new Komplex(1.0,0.0));
 			this.setElement(1,0,new Komplex(1.0,0.0));
 			this.setElement(1,1,new Komplex(0.0,0.0));
