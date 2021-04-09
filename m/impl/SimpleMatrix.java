@@ -2,8 +2,8 @@ package m.impl;
 import m.*;
 public class SimpleMatrix implements Matrix
 {
-	private int dim = 0;
-	private Komplex[][] m = null;
+	protected int dim = 0;
+	protected Komplex[][] m = null;
 	public SimpleMatrix(int n)
 	{
 		dim = n;
@@ -57,6 +57,28 @@ public class SimpleMatrix implements Matrix
 				sum = Komplex.add(sum,z);
 			}
 			erg.setElement(i,sum);
+		}
+		return erg;
+	}
+	@Override 
+	public Matrix mult(Matrix matrix)
+	{
+		int n = dim;
+		Matrix erg = new SimpleMatrix(n);
+		for (int i=0;i<n;i++)
+		{
+			for (int j=0;j<n;j++)
+			{
+				Komplex summe = new Komplex(0.0,0.0);
+				for (int k=0;k<n;k++)
+				{
+					Komplex element1 = m[i][k];
+					Komplex element2 = matrix.getElement(k,j);
+					Komplex produkt = Komplex.mult(element1,element2);
+					summe = Komplex.add(summe,produkt);
+				}
+				erg.setElement(i,j,summe);
+			}
 		}
 		return erg;
 	}
